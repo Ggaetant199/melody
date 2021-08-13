@@ -1,0 +1,18 @@
+.row {
+    margin: 0;
+    padding: 0;
+}
+
+.m-0 {
+    margin: 0;
+}
+
+.p-0 {
+    padding: 0;
+}
+
+.app-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1100px;
+}

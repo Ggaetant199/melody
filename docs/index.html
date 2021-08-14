@@ -5,35 +5,118 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="res/css/main.css">
     <link rel="stylesheet" href="res/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="res/highlight/styles/github-dark-dimmed.min.css">
 </head>
-<body class="bg-light">
+<body class="bg-light text-justify">
 
     <header style="border-bottom: 1px solid #00000050;">
         <div class="app-container p-4">
-            <h1 class="text-center">Melody</h1>
+            <h1 class="text-center anime">  Melody  </h1>
+
+            <nav class="text-center">
+                <a href="" class="ml-2 mr-2">Docs</a>
+                <a href="" class="ml-2 mr-2">Exemple</a>
+            </nav>
         </div>
     </header>
 
     <section >
         <div class="app-container p-4">
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam ipsam iste asperiores explicabo officiis minima provident? Quae culpa qui quis harum provident similique commodi? Autem doloremque dolorem consequuntur aliquid dolorum.
+                <strong>Melody</strong> est un <strong>framework php</strong> qui à pour but de faciliter le démarrage d'un projet php,
+                soit pour créer une nouvelle <strong> application </strong> en php ou une <strong> API </strong> complet.
             </p>
+
+            <p>
+                Inspirer de la célèbre <strong>librairie express.js</strong> pour créer des applications côté serveur avec <strong>NODE JS</strong>.
+            </p>
+
+            <div class="code language-php" style="max-height: 400px;">
+                include 'vendor/auload.php';
+
+                $app = new Melody\main\Main('q');
+
+                //middelware comme express.js en nod js
+                $app->get('/', ($req, $res) => {
+                    $res->send('route get');
+                });
+
+                $app->post('/', ($req, $res) => {
+                    $res->send('route post');
+                });
+
+                $app->put('/', ($req, $res) => {
+                    $res->send('route put');
+                });
+
+                $app->delete('/', ($req, $res) => {
+                    $res->send('route delete');
+                });
+
+                $app->default(($req, $res) => {
+                    $res->statut(404)->send('route par défaut si aucune requête valide ');
+                });
+
+                $app->end();
+            </div>
+
         </div>
     </section>
 
     
-    <footer class="bg-dark ">
-        <div class="app-container p-4 text-white ">
-            <p class="text-center">
-                &copy; <span id="year">2021</span> <a href="mailto:gg.gomsugaetant@gmail.com" class="text-info">gg.gomsugaetant@gmail.com</a> ; free lib.
-            </p>
+    <footer style="border-top: 1px solid #00000050;">
+        <div class="bg-light" >
+            <div class="app-container p-4">
+                <div class="row">
+                    <div class="col-6 ">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque animi nam similique doloremque dolores, dolorum accusamus maxime non incidunt excepturi aut facilis maiores repellendus qui aspernatur quia libero impedit sequi.
+                    </div>
+                    <div class="col-6">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque animi nam similique doloremque dolores, dolorum accusamus maxime non incidunt excepturi aut facilis maiores repellendus qui aspernatur quia libero impedit sequi.
+                    </div>    
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-dark" >
+            <div class="app-container p-4 text-white ">
+                <p class="text-center">
+                    &copy; <span id="year">2021</span> <a href="mailto:gg.gomsugaetant@gmail.com" class="text-info">gg.gomsugaetant@gmail.com</a> ; MIT license.
+                </p>
+            </div>
         </div>
     </footer>
+    
+    <canvas id="canvas-basic"></canvas>
+    <div class="bloc-logo">
+        <canvas id="logo-canvas"></canvas>
+        <a href="index.html" class="logo-mask">Granim.js</a>
+    </div>
 
     <script src="res/jquery/jquery.min.js"></script>
     <script src="res/bootstrap/bootstrap.min.js"></script>
+    <script src="res/highlight/highlight.min.js"></script>
+    <script src="res/animejs/anime.min.js"></script>
+    <script src="res/slick/slick.min.js"></script>
+    <script>
+        $('.code').each((i, elt) => {
+            hljs.highlightElement(elt);
+        });
+    </script>
+
+    <script>
+        anime({
+            targets: '.anime',
+            // translateX: 0,
+            rotate: '2turn',
+            // backgroundColor: '#FFF',
+            color: '#feabcd',
+            duration: 2000
+        });
+    </script>
+
 </body>
 </html>

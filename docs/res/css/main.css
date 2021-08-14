@@ -16,3 +16,9 @@
     margin-right: auto;
     max-width: 1100px;
 }
+
+.code{
+    white-space:pre;
+    overflow: auto;
+    padding-right: 50px;
+}

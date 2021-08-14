@@ -1,19 +1,27 @@
 <?php
 namespace melody\http;
 
+/**
+ * représente la requête du client
+ */
+
 class Request
 {
     protected   $uri;
-    protected   $nameGetUri;
+    protected   $varGetUri;
     protected   $method;
+    protected   $varGetUri_isUri;
     public      $headers;
     public      $query;
     public      $params;
     public      $body;
     public      $files;
 
-    public function __construct(string $nameGetUri = null) {
-        $this->nameGetUri = $nameGetUri;
+    public function __construct(string $varGetUri = null, bool $varGetUri_isUri = false) {
+      
+        $this->varGetUri        = $varGetUri;
+        $this->varGetUri_isUri  = $varGetUri_isUri;
+
         $this->init();
     }
 
@@ -34,20 +42,32 @@ class Request
         return $this->uri;
     }
 
+    public function upload () {
+
+    }
+
     protected function initUri () {
 
-        if ($this->nameGetUri != null) {
+        if ($this->varGetUri != null) {
 
-            if (isset($_GET[$this->nameGetUri]))
-                $this->uri = $_GET[$this->nameGetUri];
-            else 
-                $this->uri = '';
+            if ($this->varGetUri_isUri) {
+                $this->uri = $this->varGetUri;
+                return $this;
+            }
 
-        } else {
-            $this->uri = urldecode(
-                parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
-            );
+            if (isset($_GET[$this->varGetUri])) {
+                $this->uri = $_GET[$this->varGetUri];
+                return $this;
+            }
+            
+            $this->uri = '';
+
+            return $this;
         }
+
+        $this->uri = urldecode(
+            parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
+        );
 
         return $this;
     }

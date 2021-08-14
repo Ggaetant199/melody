@@ -1,2 +1,2 @@
 # melody
-petite librairie php pour construire app ou une api rapidemaent
+petite librairie php pour construire une app ou une api rapidemaent
